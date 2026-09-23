@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikolaj sin Portefølje</title>
+<style>
+  :root {
+    --bg: #111114;
+      --panel: #1a1a1f;
+        --ink: #f4f3ef;
+          --muted: #9a9aa2;
+            --accent: #ff5b3c;
+              --line: #2b2b32;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+      background: var(--bg);
+        color: var(--ink);
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            line-height: 1.6;
+  }
+  .wrap {
+    max-width: 760px;
+      margin: 0 auto;
+        padding: 0 24px;
+  }
+  header {
+    padding: 60px 0 40px;
+  }
+  .tagrow {
+    display: flex;
+      justify-content: space-between;
+        align-items: center;
+          margin-bottom: 60px;
+  }
+  .tagrow .mark {
+    font-weight: 700;
+      letter-spacing: -0.02em;
+  }
+  .tagrow nav {
+    display: flex;
+      gap: 20px;
+  }
+  .tagrow nav a {
+    color: var(--muted);
+      text-decoration: none;
+        font-size: 0.85rem;
+  }
+  .tagrow nav a:hover { color: var(--accent); }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+        line-height: 1.05;
+          margin: 0 0 20px;
+  }
+  header .role {
+    color: var(--muted);
+      max-width: 460px;
+        font-size: 1.02rem;
+  }
+  section {
+    padding: 50px 0;
+      border-top: 1px solid var(--line);
+  }
+  .section-head {
+    display: flex;
+      justify-content: space-between;
+        align-items: baseline;
+          margin-bottom: 24px;
+  }
+  h2 {
+    font-size: 0.85rem;
+      text-transform: uppercase;
+        letter-spacing: 0.12em;
+          color: var(--muted);
+            margin: 0;
+               font-weight: 600;
+  }
+  .about-full {
+    display: none;
+      margin-top: 10px;
+        color: var(--muted);
+  }
+  .about-full.show { display: block; }
+  button {
+    font-family: inherit;
+      font-size: 0.8rem;
+         padding: 7px 14px;
+           border: 1px solid var(--line);
+               background: transparent;
+                   color: var(--ink);
+                      cursor: pointer;
+                         border-radius: 20px;
+  }
+  button:hover { border-color: var(--accent); color: var(--accent); }
+  .work-list {
+    display: flex;
+      flex-direction: column;
+  }
+  .work {
+    padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+  }
+  .work h3 { margin: 0 0 4px; font-size: 0.98rem; }
+    .work p { margin: 0 0 6px; color: var(--muted); font-size: 0.86rem; }
+      .work a { color: var(--accent); text-decoration: none; font-size: 0.82rem; }
+        .work a:hover { text-decoration: underline; }
+  .contact-row {
+    display: flex;
+      align-items: center;
+        gap: 12px;
+  }
+  #copyMsg {
+    font-size: 0.85rem;
+      color: var(--accent);
+        display: none;
+  }
+  .links { margin-top: 16px; display: flex; gap: 18px; flex-wrap: wrap; }
+  .links a {
+    color: var(--muted);
+      text-decoration: none;
+        font-size: 0.88rem;
+  }
+  .links a:hover { color: var(--accent); }
+  footer {
+    color: var(--muted);
+      font-size: 0.8em;
+        padding: 30px 0 50px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="tagrow">
+      <div class="mark">Portfolio</div>
+      <nav>
+        <a href="#about">Om meg</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+    </div>
+    <h1>Mikolaj Kos</h1>
+    <p class="role">Informasjonteknologi og medier - Åssiden videregående skole </p>
+  </header>
+  <section id="about">
+    <div class="section-head"><h2>Om meg</h2></div>
+    <p>Jeg liker å jobbe med programmering, mest med html har en god del med experience.</p>
+     <p class="about-full" id="aboutFull">
+      Jobber mest med filer i notepad, eller visual studio har laget en nettside for en person før og ble betalt for det.
+    </p>
+    <button onclick="toggleAbout()" id="aboutBtn">Les mer</button>
+  </section>
+  <section id="contact">
+    <div class="section-head"><h2>Kontakt</h2></div>
+    <div class="contact-row">
+      <button onclick="copyEmail()">kopier gmail</button>
+      <span id="copyMsg">kopiert!</span>
+    </div>
+    <div class="links">
+      <a href="#">Facebook</a>
+       <a href="#">Tiktok</a>
+        <a href="#">Discord</a>
+    </div>
+  </section>
+  <footer> Mikolaj Kos - Åssiden Informasjonteknologi og medier</footer>
+</div>
+<script>
+  function toggleAbout() {
+    const full = document.getElementById('aboutFull');
+    const btn = document.getElementById('aboutBtn');
+    full.classList.toggle('show');
+    btn.textContent = full.classList.contains('show') ? 'Vis mindre' : 'Les mer';
+  }
+  function copyEmail() {
+    navigator.clipboard.writeText('mikolajkos@bfk.no');
+    const msg = document.getElementById('copyMsg');
+    msg.style.display = 'inline';
+    setTimeout(() => msg.style.display = 'none', 2000);
+  }
+</script>
+</body>
+</html>
